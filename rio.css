@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url(./bg.jpg) no-repeat;
+  background-attachment: fixed;
+}
+
+.container {
+  min-width: 320px;
+  width: 70%;
+  margin: 3rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 500px;
+}
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+.container .card {
+  width: 30%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, .7);
+  box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+  border-radius: 5px;
+  transition: box-shadow .3s ease-in-out;
+}
+.container .card:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+}
+@media screen and (max-width: 768px) {
+  .container .card {
+    width: 80%;
+    margin: 2rem auto;
+  }
+}
+
+.card .card_title {
+  line-height: 3rem;
+  text-align: center;
+  color: #333;
+  /*background-color: #4FAA33;*/
+}
+
+.card .card_medal {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.card_medal .medal {
+  width: 4rem;
+  height: 4rem;
+  margin: 3rem 0;
+  line-height: 4rem;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .3s ease-out;
+}
+.card_medal .medal:hover {
+  transform: scale(1.1);
+}
+.card_medal .gold {
+  background-color: gold;
+}
+.card_medal .silver {
+  background-color: silver;
+}
+.card_medal .bronze {
+  background-color: saddlebrown;
+}
