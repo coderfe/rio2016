@@ -44,7 +44,12 @@
       <h3 class="card_title"></h3>
     </div>
 
+    <div class="footer">
+
+    </div>
+
   </div>
+
   <script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
   <script>
     $(function() {
@@ -54,11 +59,12 @@
         dataType: 'jsonp',
         success: function(data) {
           var list = data.data.OlyMedalList;
-          var d = list.slice(0, 6);
+          var d = list.slice(0, 3);
           
           // title
           $('.card_title').each(function(index) {
-            $(this).text(d[index].countryCnName);
+            var total = parseInt(d[index].gold) + parseInt(d[index].silver) + parseInt(d[index].bronze);
+            $(this).text(d[index].countryCnName + ' ' + total + ' ' + '枚');
           });
 
           // gold medal
@@ -80,12 +86,22 @@
           $('.card_flag').each(function(index) {
             var Img = '<img src="./img/';
             $(this).html(Img + d[index].country + '.png" alt="flag">');
-          })
+          });
+
+          var nums = list.length;
+
+          var now = new Date(),
+          stop = new Date(2016, 7, 21);
+          var days = stop.getDate() - now.getDate();
+          $('.footer').text('至今已有' + nums + '个国家获得奖牌' + '。' + '距离本届奥运会结束：' + days + '天');
+
+
         },
         error: function() {
           alert('Error');
         }
       });
+      
     });
   </script>
 </body>
